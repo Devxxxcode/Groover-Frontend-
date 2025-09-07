@@ -82,6 +82,9 @@ const Starting = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedStar, setSelectedStar] = useState(5);
     const [comments, setComments] = useState("");
+    const [shuffledProducts, setShuffledProducts] = useState([]);
+    const [imagesReady, setImagesReady] = useState(false);
+    const [isInitialLoad, setIsInitialLoad] = useState(true);
 
 
     const profile = useSelector((state) => state.profile.user);
@@ -162,13 +165,68 @@ const Starting = () => {
         fetchProductsData();
     }, [dispatch, products]);
 
+    // Shuffle products whenever products change
+    useEffect(() => {
+        if (products && products.length > 0) {
+            setShuffledProducts(shuffleArray(products));
+        }
+    }, [products]);
+
+    // Function to preload and swap images smoothly
+    const preloadAndSwapImages = (newProducts) => {
+        const newLoadedImages = {};
+        let loadedCount = 0;
+        const totalImages = newProducts.length;
+        
+        newProducts.forEach((product) => {
+            const img = new Image();
+            img.src = product.image || "https://via.placeholder.com/150";
+            img.onload = () => {
+                newLoadedImages[product.image] = true;
+                loadedCount++;
+                // When all images are loaded, swap them
+                if (loadedCount === totalImages) {
+                    setLoadedImages(prev => ({ ...prev, ...newLoadedImages }));
+                    setShuffledProducts(newProducts);
+                }
+            };
+            img.onerror = () => {
+                loadedCount++;
+                if (loadedCount === totalImages) {
+                    setLoadedImages(prev => ({ ...prev, ...newLoadedImages }));
+                    setShuffledProducts(newProducts);
+                }
+            };
+        });
+    };
+
+    // Timer to reshuffle products every 18 seconds
+    useEffect(() => {
+        if (products && products.length > 0 && !isInitialLoad) {
+            const reshuffleInterval = setInterval(() => {
+                const newShuffledProducts = shuffleArray(products);
+                preloadAndSwapImages(newShuffledProducts);
+            }, 20000); // Reshuffle every 20 seconds
+
+            return () => clearInterval(reshuffleInterval);
+        }
+    }, [products, isInitialLoad]);
+
     // New state for tracking loaded images
     const [loadedImages, setLoadedImages] = useState({});
 
-    // Preload images when products change
+    // Preload images when shuffled products change
     useEffect(() => {
-        if (products && products.length > 0) {
-            products.forEach((product) => {
+        if (shuffledProducts && shuffledProducts.length > 0) {
+            // Only show loading state on initial load, not during reshuffle
+            if (isInitialLoad) {
+                setImagesReady(false);
+            }
+            
+            let loadedCount = 0;
+            const totalImages = shuffledProducts.length;
+            
+            shuffledProducts.forEach((product) => {
                 const img = new Image();
                 img.src = product.image || "https://via.placeholder.com/150";
                 img.onload = () => {
@@ -176,13 +234,37 @@ const Starting = () => {
                         ...prev,
                         [product.image]: true,
                     }));
+                    loadedCount++;
+                    // Only set images ready when all images are loaded
+                    if (loadedCount === totalImages) {
+                        setImagesReady(true);
+                        setIsInitialLoad(false); // Mark initial load as complete
+                    }
+                };
+                img.onerror = () => {
+                    // Handle image load error
+                    loadedCount++;
+                    if (loadedCount === totalImages) {
+                        setImagesReady(true);
+                        setIsInitialLoad(false);
+                    }
                 };
             });
         }
-    }, [products]);
+    }, [shuffledProducts, isInitialLoad]);
 
     // Utility to check if an image is loaded
     const isImageLoaded = (src) => loadedImages[src];
+
+    // Function to shuffle array randomly
+    const shuffleArray = (array) => {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    };
 
     const groupProducts = (products, groupSize) => {
         const grouped = [];
@@ -192,7 +274,7 @@ const Starting = () => {
         return grouped;
     };
 
-    const groupedProducts = products?.length > 0 ? groupProducts(products, 7) : [[]];
+    const groupedProducts = shuffledProducts?.length > 0 ? groupProducts(shuffledProducts, 7) : [[]];
     const totalSlides = groupedProducts.length;
 
     const handleNextSlide = () => {
@@ -676,7 +758,7 @@ const Starting = () => {
                 </div>
 
                 <div className="relative flex justify-center items-center w-full min-h-[400px]">
-                    {isLoading ? (
+                    {isLoading || (isInitialLoad && !imagesReady) ? (
                         <div className="grid grid-cols-3 grid-rows-3 gap-6 w-full max-w-4xl">
                             {[...Array(9)].map((_, i) => (
                                 <div
@@ -699,7 +781,7 @@ const Starting = () => {
                                     <img
                                         src={product.image || "https://via.placeholder.com/150"}
                                         alt={product.name || `Product ${idx + 1}`}
-                                        className={`w-full h-full object-cover rounded-lg transition-opacity duration-300 ${loadedImages[product.image] ? "opacity-100" : "opacity-0"
+                                        className={`w-full h-full object-cover rounded-lg transition-opacity duration-500 ${loadedImages[product.image] ? "opacity-100" : "opacity-0"
                                             }`}
                                     />
                                 </div>
@@ -711,7 +793,7 @@ const Starting = () => {
                                     <img
                                         src={groupedProducts[currentSlide][3].image || "https://via.placeholder.com/150"}
                                         alt={groupedProducts[currentSlide][3].name || "Product 4"}
-                                        className={`w-full h-full object-cover rounded-lg transition-opacity duration-300 ${loadedImages[groupedProducts[currentSlide][3].image]
+                                        className={`w-full h-full object-cover rounded-lg transition-opacity duration-500 ${loadedImages[groupedProducts[currentSlide][3].image]
                                             ? "opacity-100"
                                             : "opacity-0"
                                             }`}
@@ -736,7 +818,7 @@ const Starting = () => {
                                     <img
                                         src={groupedProducts[currentSlide][4].image || "https://via.placeholder.com/150"}
                                         alt={groupedProducts[currentSlide][4].name || "Product 5"}
-                                        className={`w-full h-full object-cover rounded-lg transition-opacity duration-300 ${loadedImages[groupedProducts[currentSlide][4].image]
+                                        className={`w-full h-full object-cover rounded-lg transition-opacity duration-500 ${loadedImages[groupedProducts[currentSlide][4].image]
                                             ? "opacity-100"
                                             : "opacity-0"
                                             }`}
@@ -756,7 +838,7 @@ const Starting = () => {
                                         <img
                                             src={product.image || "https://via.placeholder.com/150"}
                                             alt={product.name || `Product ${i + 6}`}
-                                            className={`w-full h-full object-cover rounded-lg transition-opacity duration-300 ${loadedImages[product.image] ? "opacity-100" : "opacity-0"
+                                            className={`w-full h-full object-cover rounded-lg transition-opacity duration-500 ${loadedImages[product.image] ? "opacity-100" : "opacity-0"
                                                 }`}
                                         />
                                     </div>
