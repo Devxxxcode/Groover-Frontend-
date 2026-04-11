@@ -13,7 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import videoSource from "../../assets/home_video.mp4";
 import { CiCreditCard1 } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
-import { about, certificate, deposit, events, faq, starting, terms, withdraw } from "../../constants/app.routes";
+import { about, certificate, deposit, events, faq, home, level, notifications, starting, terms, withdraw } from "../../constants/app.routes";
 import BottomNavMobile from "./components/BottomNavMobile";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchActivePacks } from "../../app/service/packs.service"; // Import the service
@@ -171,7 +171,7 @@ const Home = () => {
             >
                 <div className="md:hidden relative flex items-center">
                     <IoMdNotificationsOutline
-                        onClick={() => navigate("/home/notifications")}
+                        onClick={() => navigate(`${home}/${notifications}`)}
                         className={`text-lg cursor-pointer ml-2 ${unreadNotifications > 0 ? "shake" : ""}`}
                     />
                     {unreadNotifications > 0 && (
@@ -181,8 +181,8 @@ const Home = () => {
                     )}
                 </div>
                 <marquee direction="">
-                    Welcome to Musosoup! We collaborate with you to drive better exposure and
-                    create proven value with Musosoup platform strategy and product solutions.
+                    Welcome to Muzoup! We collaborate with you to drive better exposure and
+                    create proven value with Muzoup platform strategy and product solutions.
                 </marquee>
             </motion.div>
 
@@ -324,7 +324,7 @@ const Home = () => {
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-bold text-gray-800">VIP Levels</h2>
                     <button
-                        onClick={() => navigate("/home/level")}
+                        onClick={() => navigate(`${home}/${level}`)}
                         className="font-semibold rounded-full border border-primary p-2 flex items-center transition-transform hover:scale-105 transform">
                         View More
                         <BsArrowRightShort className="text-2xl text-primary" />
@@ -341,7 +341,7 @@ const Home = () => {
                         packItems.slice(0, 4).map((pack, idx) => (
                             <motion.div
                                 key={idx}
-                                onClick={() => navigate("/home/level")}
+                                onClick={() => navigate(`${home}/${level}`)}
                                 className="p-5 rounded-lg cursor-pointer bg-secondary border-primary border flex flex-col justify-center items-center h-auto relative min-w-0"
                             >
                                 <div className="flex justify-between w-full items-center mb-2">

@@ -3,13 +3,14 @@ import { NavLink } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import PropTypes from "prop-types";
 import logo from "../../../assets/logo.svg";
+import { home, starting, records } from "../../../constants/app.routes";
 
 function BottomNavMobile() {
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white shadow-inner flex justify-around items-center py-2 md:hidden">
       {/* Home Link */}
       <NavLink
-        to="/home"
+        to={home}
         end
         className={({ isActive }) =>
           isActive
@@ -23,7 +24,7 @@ function BottomNavMobile() {
 
       {/* Starting Link - Elevated Icon */}
       <NavLink
-        to="/home/starting"
+        to={`${home}/${starting}`}
         className={({ isActive }) =>
           isActive
             ? "text-primary font-bold flex flex-col items-center relative -top-5"
@@ -42,7 +43,7 @@ function BottomNavMobile() {
 
       {/* Records Link */}
       <NavLink
-        to="/home/records"
+        to={`${home}/${records}`}
         className={({ isActive }) =>
           isActive
             ? "text-primary font-bold flex flex-col items-center"

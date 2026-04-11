@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import SideBarWeb from "./components/SideBarWeb";
 import logo from "../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
-import { homepage } from "../../constants/app.routes";
+import { landing, home, profile as profileRoute } from "../../constants/app.routes";
 import profilep from "../../assets/profile-pic.jpg"
 import { useSelector } from "react-redux";
 import { BiUserCircle } from "react-icons/bi";
@@ -20,13 +20,13 @@ const HomeLayout = () => {
                     <div className="flex items-center">
                         <img
                             src={logo}
-                            onClick={() => navigate(homepage)}
+                            onClick={() => navigate(landing)}
                             alt="Logo"
                             className="w-24 h-auto block md:hidden"
                         />
                     </div>
                     <div className="flex items-center justify-center space-x-2 text-primary">
-                        <a href="/home/profile" className="flex">
+                        <a href={`${home}/${profileRoute}`} className="flex">
                             <span className="text-lg font-medium">{profile?.first_name || ""}</span>
                             {profile?.profile_picture ? (<img
                                 src={profile?.profile_picture || profilep}

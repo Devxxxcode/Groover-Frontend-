@@ -1,8 +1,9 @@
 export const homepage = "/";
+export const landing = "/home";
 export const login = "/login";
 export const signup = "signup";
 export const loader = "loader";
-export const home = "/home";
+export const home = "/app";
 export const contact1 = "/contact"
 export const profile = "profile";
 export const personal = "personal";

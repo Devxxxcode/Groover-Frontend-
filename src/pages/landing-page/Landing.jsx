@@ -38,23 +38,23 @@ const Landing = () => {
     }, []);
 
     const listItems = [
-        "Musosoup lets you free up your inbox by moving all your submissions on to our music-first platform",
+        "Muzoup lets you free up your inbox by moving all your submissions on to our music-first platform",
         "Streamline your workflow, save hours on admin, and spend your time discovering great new music.",
         "Our platform has been designed to let you easily view new music, engage with artists and make offers quickly and efficiently",
-        "Musosoup gives you more time to do what you love – and be rewarded for doing it."
+        "Muzoup gives you more time to do what you love and be rewarded for doing it."
     ];
 
     const faqData = [
-        { q: "Is it free for curators to use Musosoup?", a: "Yes, it’s free for curators to set up a Musosoup profile and use our platform." },
-        { q: "Can I make money using Musosoup?", a: "Yes. There are two ways you can make money via Musosoup. The first is from artist contributions towards the cost of creating content and promoting it. The second is through our referral scheme, which pays you for each artist who signs up to Musosoup using your unique referral link." },
+        { q: "Is it free for curators to use Muzoup?", a: "Yes, it’s free for curators to set up a Muzoup profile and use our platform." },
+        { q: "Can I make money using Muzoup?", a: "Yes. There are two ways you can make money via Muzoup. The first is from artist contributions towards the cost of creating content and promoting it. The second is through our referral scheme, which pays you for each artist who signs up to Muzoup using your unique referral link." },
         { q: "What are marketing contributions?", a: "Curators may request marketing contributions from artists, which help to cover the cost of promoting the content created using social media ads. Curators are only allowed to retain a maximum of 20% of this to cover their ad management time and asset creation." },
         { q: "Can I just provide coverage for free?", a: "Absolutely. It’s completely up to you whether you add an additional cost offer to artists. There are plenty of curators who provide free coverage on our platform." },
-        { q: "Are there deadlines on submissions?", a: "We understand how busy it can get as a curator, so all tracks submitted via Musosoup will stay on the platform for three weeks from their date of release. However, you do have the option of saving tracks, which keeps them available after an artist’s three-week campaign has ended." },
-        { q: "What kind of coverage can I offer?", a: "It’s important to note that there are strict rules about what can be offered in exchange for a contribution and what must always be offered for free. Radio plays, playlist spots and copy-and-pasted written coverage DO NOT QUALIFY and must always be offered for free. Only high-quality, original, bespoke coverage is allowed via Musosoup. Beyond coverage promoting an artist’s submission, this could also include graphic design, video editing, translations, social sharing bundles/stories, and influencer sharing." },
-        { q: "Does Musosoup review each offer I make?", a: "Yes. Every offer made on our platform is reviewed and approved by Musosoup to maintain quality, value and fairness." },
-        { q: "Does Musosoup review the coverage created by curators?", a: "Yes. We review all final content to make sure curators have held up their end of the deal and provided genuine value to the artist. Any funds due to the curator are not released until the content submitted has been approved by Musosoup." },
-        { q: "How does the Marketplace work?", a: "The Marketplace flips our core Offers system, which lets you view artists’ submissions before choosing who to work with. The Marketplace lets you post specific promotions that artists can request directly. You can accept or decline requests and easily manage your workflow on our platform. Listing a promotion on the Marketplace is a great way for new curators to get started on Musosoup." },
-        { q: "How else is Musosoup different from other platforms?", a: "In recent years, a number of music submission platforms have been established, on which the artists pays for a “guaranteed listen” and “feedback”. These platforms have made big steps in making curation more sustainable, but still have a long way to go in also being fair for the artist. The system has been abused by curators churning out stock feedback in order to receive their fee. There’s also no vetting process when artists submit to these platforms, so a lot of artists are submitting music that isn’t ready, and most likely submitting to the wrong curators too. With Musosoup, all artists’ submissions are quality-checked, and curators approach artists they like and want to promote, providing a considerably better service all round." },
+        { q: "Are there deadlines on submissions?", a: "We understand how busy it can get as a curator, so all tracks submitted via Muzoup will stay on the platform for three weeks from their date of release. However, you do have the option of saving tracks, which keeps them available after an artist’s three-week campaign has ended." },
+        { q: "What kind of coverage can I offer?", a: "It’s important to note that there are strict rules about what can be offered in exchange for a contribution and what must always be offered for free. Radio plays, playlist spots and copy-and-pasted written coverage DO NOT QUALIFY and must always be offered for free. Only high-quality, original, bespoke coverage is allowed via Muzoup. Beyond coverage promoting an artist’s submission, this could also include graphic design, video editing, translations, social sharing bundles/stories, and influencer sharing." },
+        { q: "Does Muzoup review each offer I make?", a: "Yes. Every offer made on our platform is reviewed and approved by Muzoup to maintain quality, value and fairness." },
+        { q: "Does Muzoup review the coverage created by curators?", a: "Yes. We review all final content to make sure curators have held up their end of the deal and provided genuine value to the artist. Any funds due to the curator are not released until the content submitted has been approved by Muzoup." },
+        { q: "How does the Marketplace work?", a: "The Marketplace flips our core Offers system, which lets you view artists’ submissions before choosing who to work with. The Marketplace lets you post specific promotions that artists can request directly. You can accept or decline requests and easily manage your workflow on our platform. Listing a promotion on the Marketplace is a great way for new curators to get started on Muzoup." },
+        { q: "How else is Muzoup different from other platforms?", a: "In recent years, a number of music submission platforms have been established, on which the artists pays for a guaranteed listen and feedback. These platforms have made big steps in making curation more sustainable, but still have a long way to go in also being fair for the artist. The system has been abused by curators churning out stock feedback in order to receive their fee. There’s also no vetting process when artists submit to these platforms, so a lot of artists are submitting music that isn’t ready, and most likely submitting to the wrong curators too. With Muzoup, all artists’ submissions are quality-checked, and curators approach artists they like and want to promote, providing a considerably better service all round." },
     ];
 
     const [openFaqIndex, setOpenFaqIndex] = useState(null);
@@ -67,7 +67,7 @@ const Landing = () => {
         {
             icon: MusicIcon,
             title: "Access the best new music",
-            content: "Musosoup is completely free for curators. Once your account is approved, you'll get access to a curated stream of high-quality new music and the opportunity to connect with artists actively looking to promote their releases."
+            content: "Muzoup is completely free for curators. Once your account is approved, you'll get access to a curated stream of high-quality new music and the opportunity to connect with artists actively looking to promote their releases."
         },
         {
             icon: PeopleIcon,
@@ -77,7 +77,7 @@ const Landing = () => {
         {
             icon: MoneyIcon,
             title: "Earn money from your work",
-            content: "We've built Musosoup to ensure curators are paid fairly—without compromising integrity—for the time, effort, and investment you put into supporting grassroots music."
+            content: "We've built Muzoup to ensure curators are paid fairly without compromising integrity for the time, effort, and investment you put into supporting grassroots music."
         }
     ];
 
@@ -86,7 +86,7 @@ const Landing = () => {
         {
             icon: MoneyIcon,
             title: "Contribution Requests",
-            content: "Musosoup allows curators to request contributions to help cover their time and running costs. This model supports sustainable grassroots music journalism and creates a fairer way for artists and curators to support each other."
+            content: "Muzoup allows curators to request contributions to help cover their time and running costs. This model supports sustainable grassroots music journalism and creates a fairer way for artists and curators to support each other."
         },
         {
             icon: MusicIcon,
@@ -190,7 +190,7 @@ const Landing = () => {
                     />
                     <div className="relative z-10">
                         <h1 className="md:text-[48px] md:leading-[60px] text-[32px] leading-[44px] tracking-[-1px] md:mt-16 
-                        font-bold text-center mb-10 text-[#072C3B]">Become a Musosoup curator</h1>
+                        font-bold text-center mb-10 text-[#072C3B]">Become a Muzoup curator</h1>
                         <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-8 pr-8 scroll-smooth">
                             {features.map((feature, index) => (
                                 <motion.div
@@ -223,7 +223,7 @@ const Landing = () => {
                                 className="card py-2 px-3 font-medium transition-all duration-300 flex items-center text-white 
                             gap-2 bg-[#072C3B] hover:bg-[#072C3B]/80"
                             >
-                                Apply to be a Musosoup curator
+                                Apply to be a Muzoup curator
                             </Link>
                         </motion.nav>
                     </div>
@@ -268,7 +268,7 @@ const Landing = () => {
                         <p className="mb-6 text-[16px] leading-[28px] text-[#373843]">
                             Overloaded with emails and submission deadlines? Struggling to keep track of
                             who you’ve contacted and what jobs need completing? Need more oversight on
-                            your acceptance rates and earnings? Sounds like Musosoup is the music curation
+                            your acceptance rates and earnings? Sounds like Muzoup is the music curation
                             platform for you...
                         </p>
                         <ul className="space-y-4 mt-6">
@@ -323,7 +323,7 @@ const Landing = () => {
                         className="card py-2 px-3 text-[16px] leading-[24px] font-medium transition-all duration-300 flex items-center text-[#1D4A5D] 
                         gap-2 bg-white hover:bg-blue-200/80"
                     >
-                        Apply to be a Musosoup curator
+                        Apply to be a Muzoup curator
                     </Link>
                 </motion.nav>
             </section>
@@ -333,7 +333,7 @@ const Landing = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-screen-2xl mx-auto">
                     <div className="md:ml-4">
                         <h2 className="md:text-[48px] md:leading-[60px] text-[32px] leading-[44px] tracking-[-1px] md:px-0 px-4 font-bold mb-4 
-                        text-left text-[#072C3B]">Introducing the Musosoup Marketplace</h2>
+                        text-left text-[#072C3B]">Introducing the Muzoup Marketplace</h2>
                         <p className="text-left mx-auto px-4 md:px-0 text-[16px] leading-[28px] text-[#373843]">
                             To complement our unique Offers system, artists can now apply for promotions
                             from curators in the Marketplace. It’s quick and easy to add a listing, review
@@ -421,7 +421,7 @@ const Landing = () => {
                 <div className="relative z-10 max-w-screen-2xl mx-auto">
                     <h2 className="md:text-[40px] md:leading-[52px] text-[32px] leading-[44px] tracking-[-1px]
                      font-bold mb-6">
-                        Join the hundreds of curators on Musosoup sustainably promoting grassroots music.
+                        Join the hundreds of curators on Muzoup sustainably promoting grassroots music.
                     </h2>
                     <motion.nav
                         variants={zoomIn(0.5)}
@@ -442,7 +442,7 @@ const Landing = () => {
 
             {/* FOOTER */}
             <footer className="bg-gray-50 text-[#072C3B] text-center py-6 text-sm max-w-screen-2xl mx-auto">
-                © {new Date().getFullYear()} Musosoup. All Rights Reserved.
+                © {new Date().getFullYear()} Muzoup. All Rights Reserved.
             </footer>
         </div>
     );

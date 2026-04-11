@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   homepage,
+  landing,
   home,
   withdraw,
   deposit,
@@ -56,14 +57,15 @@ function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
-        {/* Loader Route */}
-        <Route path={homepage} element={<Landing />} />
-
         {/* Public Routes */}
+        <Route path={homepage} element={<LoginLayout />}>
+          <Route index element={<Login />} />
+        </Route>
         <Route path={login} element={<LoginLayout />}>
           <Route index element={<Login />} />
           <Route path={signup} element={<SignUp />} />
         </Route>
+        <Route path={landing} element={<Landing />} />
         <Route path={contact1} element={<ContactUs />} />
         <Route path={termsandconds} element={<TermsandCond />} />
         <Route path={loader} element={<Loader />} />

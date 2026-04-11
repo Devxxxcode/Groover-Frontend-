@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { fadeIn, slideIn } from "../../motion";
 import { toast } from "sonner";
 import BottomNavMobile from "./components/BottomNavMobile";
+import { contact, deposit, home, notifications, payment, personal, withdraw } from "../../constants/app.routes";
 import authService from "../../app/service/auth.service";
 import { logout } from "../../app/slice/auth.slice";
 import { login } from "../../constants/app.routes";
@@ -222,7 +223,7 @@ const Profile = () => {
                     <motion.div
                         initial={fadeIn("right", null).initial}
                         whileInView={fadeIn("right", 1 * 2).animate}
-                        onClick={() => navigate("/home/deposit")}
+                        onClick={() => navigate(`${home}/${deposit}`)}
                         className="flex items-center cursor-pointer justify-between p-4 border-b">
                         <div className="flex items-center space-x-4 transition-transform hover:scale-105 transform">
                             <BiCreditCard className="text-primary" />
@@ -233,7 +234,7 @@ const Profile = () => {
                     <motion.div
                         initial={fadeIn("right", null).initial}
                         whileInView={fadeIn("right", 2 * 2).animate}
-                        onClick={() => navigate("/home/withdraw")}
+                        onClick={() => navigate(`${home}/${withdraw}`)}
                         className="flex items-center cursor-pointer justify-between p-4">
                         <div className="flex items-center space-x-4 transition-transform hover:scale-105 transform">
                             <BiCreditCard className="text-primary" />
@@ -248,7 +249,7 @@ const Profile = () => {
                     <motion.div
                         initial={fadeIn("right", null).initial}
                         whileInView={fadeIn("right", 3 * 2).animate}
-                        onClick={() => navigate("/home/personal")}
+                        onClick={() => navigate(`${home}/${personal}`)}
                         className="flex items-center cursor-pointer justify-between p-4 border-b">
                         <div className="flex items-center space-x-4 transition-transform hover:scale-105 transform">
                             <BiUser className="text-primary" />
@@ -259,7 +260,7 @@ const Profile = () => {
                     <motion.div
                         initial={fadeIn("right", null).initial}
                         whileInView={fadeIn("right", 4 * 2).animate}
-                        onClick={() => navigate("/home/payment")}
+                        onClick={() => navigate(`${home}/${payment}`)}
                         className="flex items-center cursor-pointer justify-between p-4">
                         <div className="flex items-center space-x-4 transition-transform hover:scale-105 transform">
                             <BiCreditCard className="text-primary" />
@@ -274,7 +275,7 @@ const Profile = () => {
                     <motion.div
                         initial={fadeIn("right", null).initial}
                         whileInView={fadeIn("right", 5 * 2).animate}
-                        onClick={() => navigate("/home/contact")}
+                        onClick={() => navigate(`${home}/${contact}`)}
                         className="flex items-center cursor-pointer justify-between p-4 border-b">
                         <div className="flex items-center space-x-4 transition-transform hover:scale-105 transform">
                             <BiUser className="text-primary" />
@@ -285,7 +286,7 @@ const Profile = () => {
                     <motion.div
                         initial={fadeIn("right", null).initial}
                         whileInView={fadeIn("right", 6 * 2).animate}
-                        onClick={() => navigate("/home/notifications")}
+                        onClick={() => navigate(`${home}/${notifications}`)}
                         className="flex items-center cursor-pointer justify-between p-4">
                         <div className="flex items-center space-x-4 transition-transform hover:scale-105 transform">
                             <BiUser className="text-primary" />

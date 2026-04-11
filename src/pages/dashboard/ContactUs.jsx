@@ -68,11 +68,11 @@ const ContactUs = () => {
             {/* Logo and Heading */}
             <div className="text-center mb-10">
                 <div className="flex flex-col items-center">
-                    <img src={logo} alt="Musosoup Logo" className="w-48 h-auto mb-4" />                    <FaHeadset className="text-6xl text-gray-300 mb-4" />
+                    <img src={logo} alt="Muzoup Logo" className="w-48 h-auto mb-4" />                    <FaHeadset className="text-6xl text-gray-300 mb-4" />
                 </div>
                 <h1 className="text-2xl font-bold text-gray-700">Welcome to Customer Service</h1>
                 <p className="text-gray-600 mt-2">
-                    We&apos;re here to provide you with all your services, needs, and inquiries or issues 24/7.
+                    We&apos;re here to provide you with all your service needs, inquiries, and issues 24/7.
                 </p>
             </div>
 

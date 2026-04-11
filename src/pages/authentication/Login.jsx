@@ -11,6 +11,7 @@ import { toast } from "sonner"; // Import sonner for toasts
 import authService from "../../app/service/auth.service";
 import AppInit from "../../app/state.helper";
 import Loader from "../dashboard/components/loader";
+import { home, landing } from "../../constants/app.routes";
 // import { Toaster } from "sonner";
 
 const Login = () => {
@@ -79,7 +80,7 @@ const Login = () => {
                     setShowPopup(true);
                     setTimeout(() => {
                         setShowPopup(false);
-                        navigate("/home"); // Replace with your dashboard route
+                        navigate(home);
                     }, 2000);
                 } else {
                     toast.error("Failed to initialize the application. Please try again.");
@@ -100,12 +101,30 @@ const Login = () => {
 
     return (
         <div className="relative flex items-center justify-center min-h-screen bg-gray-100">
-
             {/* Background Layer */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-gray-200"
                 style={{ filter: "blur(4px)" }}
             ></div>
+
+            <div className="absolute top-0 left-0 right-0 z-20 px-4 py-5">
+                <div className="mx-auto flex max-w-6xl items-center justify-between">
+                    <button
+                        type="button"
+                        onClick={() => navigate(landing)}
+                        className="inline-flex items-center rounded-full border border-[#072C3B] bg-[#072C3B] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B1126]"
+                    >
+                        Back to Home
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => navigate(landing)}
+                        className="rounded-full border border-[#072C3B]/20 bg-white/85 px-4 py-2 text-sm font-medium text-[#072C3B] shadow-sm transition hover:border-[#072C3B] hover:bg-white"
+                    >
+                        Visit Home Page
+                    </button>
+                </div>
+            </div>
 
             {/* Form Layer */}
             <motion.div
@@ -117,7 +136,8 @@ const Login = () => {
                 <img
                     src={logo}
                     alt="Logo"
-                    className="mx-auto mb-4 w-[12rem]"
+                    className="mx-auto mb-4 w-[12rem] cursor-pointer"
+                    onClick={() => navigate(landing)}
                 />
                 <h1 className="text-2xl font-semibold text-center mb-4 text-[#072C3B]/80">Login</h1>
 
