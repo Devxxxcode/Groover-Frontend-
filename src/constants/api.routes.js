@@ -1,7 +1,6 @@
 
-// export const BASEURL = "https://backend.musosoupcurator.org";
-// export const BASEURL = "https://sound-camp-qq0z.onrender.com";
-export const BASEURL = "http://127.0.0.1:8000";
+
+export const BASEURL = "https://mososoup-api-1.onrender.com";
 
 // export const BASEURL = "http://127.0.0.1:8000";
 
