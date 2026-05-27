@@ -3,11 +3,7 @@
 export const BASEURL = "https://mososoup-api-1.onrender.com";
 
 // export const BASEURL = "http://127.0.0.1:8000";
-
-export const loginAPI = `${BASEURL}/auth/login/`;
-export const registerAPI = `${BASEURL}/auth/signup/`;
-export const refreshToken = `${BASEURL}/auth/refresh-token/`;
-export const meAPI = `${BASEURL}/auth/me/`;
+h
 export const updateAPI = `${BASEURL}/auth/update_profile/`;
 export const passwordAPI = `${BASEURL}/auth/user_change_password/`;
 export const transactionPasswordAPI = `${BASEURL}/auth/user_change_transactional_password/`;

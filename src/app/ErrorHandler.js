@@ -8,13 +8,17 @@ import { showAlert } from "./slice/ui.slice";
 const ErrorHandler = (error) => {
     let title = "System Error";
     let message = "An unexpected error occurred. Please try again.";
+    const rawMessage = typeof error?.message === "string" ? error.message : "";
 
     // 1. Check for specific Axios Error types
-    if (error?.code === 'ECONNABORTED' || error?.message?.toLowerCase().includes('timeout')) {
+    if (
+        error?.code === "ECONNABORTED" ||
+        rawMessage.toLowerCase().includes("timeout")
+    ) {
         title = "Connection Timeout";
         message = "Server response timed out. Please check your connection.";
-    } 
-    else if (error?.message === 'Network Error') {
+    }
+    else if (rawMessage === "Network Error") {
         title = "Network Failure";
         message = "Unable to reach the server. Please verify your internet access.";
     }
@@ -28,7 +32,9 @@ const ErrorHandler = (error) => {
         } else if (data.detail) {
             message = data.detail;
         } else if (data.message) {
-            message = data.message;
+            message = typeof data.message === "string"
+                ? data.message
+                : JSON.stringify(data.message);
         } else if (data.error) {
             message = typeof data.error === 'string' ? data.error : JSON.stringify(data.error);
         } else if (data.errors) {
@@ -40,9 +46,25 @@ const ErrorHandler = (error) => {
             const values = Object.values(data).filter(v => typeof v === 'string');
             if (values.length > 0) message = values.join(' | ');
         }
-    } 
+    }
+    // 3. Handle app-level service responses that pass { success, message, data, errors }
+    else if (error && typeof error === "object") {
+        if (typeof error.message === "string") {
+            message = error.message;
+        } else if (error.errors && typeof error.errors === "object") {
+            const errorList = Object.values(error.errors).flat().map((item) => String(item));
+            if (errorList.length > 0) {
+                message = errorList.join(" | ");
+            }
+        } else if (error.data && typeof error.data === "object") {
+            const values = Object.values(error.data).filter((value) => typeof value === "string");
+            if (values.length > 0) {
+                message = values.join(" | ");
+            }
+        }
+    }
     // 3. Last resort - use the raw error message if it's simple
-    else if (error?.message && typeof error.message === 'string' && error.message.length < 100) {
+    else if (rawMessage && rawMessage.length < 100) {
         message = error.message;
     }
 
