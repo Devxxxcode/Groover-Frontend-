@@ -25,8 +25,11 @@ const ErrorHandler = (error) => {
     let message = "An unexpected error occurred. Please try again.";
     const rawMessage = typeof error?.message === "string" ? error.message : "";
 
+    if (typeof error === "string") {
+        message = error;
+    }
     // 1. Check for specific Axios Error types
-    if (
+    else if (
         error?.code === "ECONNABORTED" ||
         rawMessage.toLowerCase().includes("timeout")
     ) {
