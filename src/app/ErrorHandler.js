@@ -1,6 +1,21 @@
 import store from "./store";
 import { showAlert } from "./slice/ui.slice";
 
+const extractMessage = (value) => {
+    if (!value) return "";
+    if (typeof value === "string") return value;
+    if (Array.isArray(value)) {
+        return value.map((item) => extractMessage(item)).filter(Boolean).join(" | ");
+    }
+    if (typeof value === "object") {
+        const values = Object.values(value)
+            .map((item) => extractMessage(item))
+            .filter(Boolean);
+        return values.join(" | ");
+    }
+    return String(value);
+};
+
 /**
  * Handles errors from API responses and displays them using the Global Terminal HUD.
  * @param {any} error - The error object from Axios or other sources.
@@ -32,35 +47,23 @@ const ErrorHandler = (error) => {
         } else if (data.detail) {
             message = data.detail;
         } else if (data.message) {
-            message = typeof data.message === "string"
-                ? data.message
-                : JSON.stringify(data.message);
+            message = extractMessage(data.message);
         } else if (data.error) {
-            message = typeof data.error === 'string' ? data.error : JSON.stringify(data.error);
+            message = extractMessage(data.error);
         } else if (data.errors) {
-            // If it's a validation error object (key-value pairs)
-            const errorList = Object.values(data.errors).flat();
-            message = errorList.join(' | ');
+            message = extractMessage(data.errors);
         } else {
-            // Fallback for objects - extract values but keep it flat
-            const values = Object.values(data).filter(v => typeof v === 'string');
-            if (values.length > 0) message = values.join(' | ');
+            message = extractMessage(data);
         }
     }
     // 3. Handle app-level service responses that pass { success, message, data, errors }
     else if (error && typeof error === "object") {
-        if (typeof error.message === "string") {
-            message = error.message;
-        } else if (error.errors && typeof error.errors === "object") {
-            const errorList = Object.values(error.errors).flat().map((item) => String(item));
-            if (errorList.length > 0) {
-                message = errorList.join(" | ");
-            }
-        } else if (error.data && typeof error.data === "object") {
-            const values = Object.values(error.data).filter((value) => typeof value === "string");
-            if (values.length > 0) {
-                message = values.join(" | ");
-            }
+        if (error.message) {
+            message = extractMessage(error.message);
+        } else if (error.errors) {
+            message = extractMessage(error.errors);
+        } else if (error.data) {
+            message = extractMessage(error.data);
         }
     }
     // 3. Last resort - use the raw error message if it's simple

@@ -46,9 +46,10 @@ export const fetchCurrentGame = () => async (dispatch) => {
         console.log(gameData);
         return { success: true, data: gameData };
     } catch (error) {
-        const errorMessage =
-            error.response?.data?.data
-        errorMessage["message"] = error.response?.data?.message
+        const errorMessage = {
+            ...(error.response?.data?.data || {}),
+            message: error.response?.data?.message || "Failed to fetch current game.",
+        };
         dispatch(fetchCurrentGameSuccess(errorMessage));
         return { success: false, message: errorMessage };
     }
@@ -78,7 +79,12 @@ export const submitCurrentGame = (ratingScore, comment) => async (dispatch) => {
         const errorMessage =
             error.response?.data?.message || "Failed to submit the game.";
         dispatch(playGameFailure(errorMessage));
-        return { success: false, message: error };
+        return {
+            success: false,
+            message: errorMessage,
+            errors: error.response?.data?.errors || null,
+            data: error.response?.data?.data || null,
+        };
     }
 };
 
@@ -97,6 +103,11 @@ export const fetchGameRecords = () => async (dispatch) => {
         const errorMessage =
             error.response?.data?.message || "Failed to fetch game records.";
         dispatch(fetchGameRecordsFailure(errorMessage));
-        return { success: false, message: error };
+        return {
+            success: false,
+            message: errorMessage,
+            errors: error.response?.data?.errors || null,
+            data: error.response?.data?.data || null,
+        };
     }
 };
