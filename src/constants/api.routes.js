@@ -1,6 +1,6 @@
 
 
-export const BASEURL = "https://mososoup-api-1.onrender.com";
+export const BASEURL = "https://groover-backend-code.onrender.com";
 
 // export const BASEURL = "http://127.0.0.1:8000";
 export const loginAPI = `${BASEURL}/auth/login/`;
