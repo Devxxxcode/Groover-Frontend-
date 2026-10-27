@@ -33,13 +33,13 @@ const Events = () => {
             {isLoading && <Loader />}
             {!isLoading && (
                 <div className="relative w-full md:max-w-7xl p-2 md:p-0 mx-auto my-8 overflow-hidden">
-                    <div className="w-fit transition-transform hover:scale-105 transform bg-gray-200 p-2 rounded-lg shadow-sm mb-6">
+                    <div className="w-fit mb-4 transition-opacity hover:opacity-80">
                         <button
                             onClick={() => window.history.back()}
                             className="flex items-center text-lg text-primary"
                         >
                             <GoArrowLeft />
-                            <h2 className="text-xl font-bold text-gray-800 ml-4">Back</h2>
+                            <h2 className="text-base font-semibold text-primary ml-2">Back</h2>
                         </button>
                     </div>
 

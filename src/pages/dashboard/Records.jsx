@@ -15,13 +15,13 @@ import BottomNavMobile from "./components/BottomNavMobile";
 const statusColors = {
     Completed: "bg-green-100 text-green-600",
     Pending: "bg-yellow-100 text-yellow-600",
-    Freeze: "bg-primarylight text-primary",
+    "On Hold": "bg-primarylight text-primary",
 };
 
 // Function to derive status
 const getStatus = (record) => {
     if (record.pending) return "Pending";
-    if (!record.pending && record.rating_score === 0) return "Freeze";
+    if (!record.pending && record.rating_score === 0) return "On Hold";
     return "Completed";
 };
 
@@ -134,7 +134,7 @@ const Records = () => {
                             <IoDocumentText className="text-2xl text-primary" />
                         </div>
                         <div>
-                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Game Records</h1>
+                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Submission Records</h1>
                             <p className="text-gray-600 text-sm md:text-base">
                                 {filteredRecords.length} record{filteredRecords.length !== 1 ? "s" : ""} found
                             </p>
@@ -148,7 +148,7 @@ const Records = () => {
                     animate={fadeIn("right", 1 * 2).animate}
                     className="flex justify-center space-x-4 md:space-x-8 mb-6"
                 >
-                    {["All", "Completed", "Pending", "Freeze"].map((tab) => (
+                    {["All", "Completed", "Pending", "On Hold"].map((tab) => (
                         <motion.button
                             key={tab}
                             onClick={() => {

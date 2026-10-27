@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { GiCrown } from "react-icons/gi";
@@ -118,13 +119,13 @@ const Withdraw = () => {
             className="max-w-full mx-auto md:mt-8 md:mb-2 mb-52 md:p-6 p-2 bg-white rounded-lg"
         >
             {/* Back Button */}
-            <div className="w-fit transition-transform hover:scale-105 transform bg-gray-200 p-2 rounded-lg shadow-sm mb-6">
+            <div className="w-fit mb-4 transition-opacity hover:opacity-80">
                 <button
                     onClick={() => window.history.back()}
                     className="flex items-center text-lg text-primary"
                 >
                     <GoArrowLeft />
-                    <h2 className="text-xl font-bold text-gray-800 ml-4">Back</h2>
+                    <h2 className="text-base font-semibold text-primary ml-2">Back</h2>
                 </button>
             </div>
 
@@ -181,9 +182,12 @@ const Withdraw = () => {
                             initial={slideIn("right", null).initial}
                             animate={slideIn("right", 1 * 2).animate}
                         >
-                            <div className="bg-primary text-white p-4 rounded-lg mb-10">
-                                <p className="font-semibold text-sm">Total Balance</p>
-                                <p className="text-3xl font-bold">{formatCurrencyFullAmount(profile?.wallet?.balance || 0)}</p>
+                            <div className="mb-10 flex items-center justify-between rounded-lg bg-primary p-4 text-white">
+                                <div>
+                                    <p className="font-semibold text-sm">Total Balance</p>
+                                    <p className="text-3xl font-bold">{formatCurrencyFullAmount(profile?.wallet?.balance || 0)}</p>
+                                </div>
+                                <Link to="/app/deposit" className="rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/30">Deposit</Link>
                             </div>
 
                             <div className="mb-10">

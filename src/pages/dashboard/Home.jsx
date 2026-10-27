@@ -325,9 +325,9 @@ const Home = () => {
                     <h2 className="text-xl font-bold text-gray-800">VIP Levels</h2>
                     <button
                         onClick={() => navigate(`${home}/${level}`)}
-                        className="font-semibold rounded-full border border-primary p-2 flex items-center transition-transform hover:scale-105 transform">
+                        className="flex items-center rounded-full border border-primary px-3 py-1.5 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white">
                         View More
-                        <BsArrowRightShort className="text-2xl text-primary" />
+                        <BsArrowRightShort className="text-2xl" />
                     </button>
                 </div>
 
@@ -342,25 +342,22 @@ const Home = () => {
                             <motion.div
                                 key={idx}
                                 onClick={() => navigate(`${home}/${level}`)}
-                                className="p-5 rounded-lg cursor-pointer bg-secondary border-primary border flex flex-col justify-center items-center h-auto relative min-w-0"
+                                whileHover={{ y: -4 }}
+                                className="cursor-pointer min-w-0 flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-5 shadow-md transition-shadow hover:shadow-xl"
                             >
-                                <div className="flex justify-between w-full items-center mb-2">
-                                    {/* Use <img> to render the image */}
-                                    <img
-                                        src={pack.icon}
-                                        alt={pack.name}
-                                        className="w-10 h-10 object-contain" // Adjust size as needed
-                                    />
-                                    <span className="text-white rounded-lg px-2 py-1 border text-center bg-primary min-w-[80px] text-[10px] sm:text-xs flex items-center justify-center">
+                                <div className="mb-3 flex w-full items-center justify-between">
+                                    <img src={pack.icon} alt={pack.name} className="h-12 w-12 object-contain" />
+                                    <span className="rounded-full bg-primarylight px-3 py-1 text-[11px] font-bold text-primary sm:text-xs">
                                         {formatCurrencyWithCode(pack.usd_value)}
                                     </span>
                                 </div>
-                                <h3 className="font-semibold text-gray-800 text-lg text-center mb-4">
-                                    {pack.name}
-                                </h3>
-                                <p className="text-gray-600 text-sm text-center">
+                                <h3 className="mb-2 w-full text-left text-lg font-bold text-gray-800">{pack.name}</h3>
+                                <p className="w-full text-left text-sm text-gray-500">
                                     {pack.short_description || "No description available."}
                                 </p>
+                                <span className="mt-4 flex w-full items-center text-sm font-semibold text-primary">
+                                    View details <BsArrowRightShort className="text-xl" />
+                                </span>
                             </motion.div>
                         ))
                     ) : (
@@ -370,10 +367,13 @@ const Home = () => {
                 
                 {/* Show "View More" hint if there are more than 4 packs */}
                 {packItems.length > 4 && (
-                    <div className="text-center mt-6">
-                        <p className="text-gray-600 text-sm">
-                            +{packItems.length - 4} more VIP levels available
-                        </p>
+                    <div className="mt-6 text-center">
+                        <button
+                            onClick={() => navigate(`${home}/${level}`)}
+                            className="text-sm font-semibold text-primary underline-offset-2 hover:underline"
+                        >
+                            +{packItems.length - 4} more VIP levels available · See all
+                        </button>
                     </div>
                 )}
             </div>

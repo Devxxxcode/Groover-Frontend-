@@ -5,13 +5,13 @@ const Certificate = () => {
     return (
         <div className="w-full md:2 mb-52 h-screen flex flex-col">
             {/* Back Button */}
-            <div className="w-fit bg-gray-200 p-2 rounded-lg shadow-sm mb-6">
+            <div className="w-fit mb-4 transition-opacity hover:opacity-80">
                 <button
                     onClick={() => window.history.back()}
                     className="flex items-center text-lg text-primary"
                 >
                     <GoArrowLeft />
-                    <h2 className="text-xl font-bold text-gray-800 ml-4">Back</h2>
+                    <h2 className="text-base font-semibold text-primary ml-2">Back</h2>
                 </button>
             </div>
 

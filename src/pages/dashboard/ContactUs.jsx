@@ -54,13 +54,13 @@ const ContactUs = () => {
         <div className="flex flex-col items-center justify-center mt-10 md:2 mb-52 text-gray-800">
             {/* Back Button */}
             <div className="w-full">
-                <div className="w-fit bg-gray-200 p-2 rounded-lg shadow-sm mb-6">
+                <div className="w-fit mb-4 transition-opacity hover:opacity-80">
                     <button
                         onClick={() => window.history.back()}
                         className="flex items-center text-lg text-primary"
                     >
                         <GoArrowLeft />
-                        <h2 className="text-xl font-bold text-gray-800 ml-4">Back</h2>
+                        <h2 className="text-base font-semibold text-primary ml-2">Back</h2>
                     </button>
                 </div>
             </div>

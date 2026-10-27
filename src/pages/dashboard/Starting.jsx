@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { GiCrown } from "react-icons/gi";
@@ -644,7 +645,7 @@ const Starting = () => {
                                 <p className="text-white/80 text-xs md:text-sm">Welcome back to your dashboard</p>
                             </div>
                         </div>
-                        <div className="flex items-center space-x-3">
+                        <Link to="/app/level" title="View VIP levels" className="flex items-center space-x-3 transition-transform hover:scale-105">
                             {profile?.wallet?.package?.icon ? (
                                 <img
                                     src={profile.wallet.package.icon}
@@ -654,13 +655,13 @@ const Starting = () => {
                             ) : (
                                 <GiCrown className="text-3xl md:text-4xl text-white" />
                             )}
-                        </div>
+                        </Link>
                     </div>
 
                     {/* Progress Bar */}
                     <div className="mb-6">
                         <div className="flex justify-between items-center mb-2">
-                            <span className="text-sm font-medium">Daily Progress</span>
+                            <Link to="/app/records" className="text-sm font-medium underline-offset-2 hover:underline">Daily Progress · View records</Link>
                             <span className="text-sm font-bold">
                                 {profile?.current_number_count || 0} / {profile?.total_number_can_play || 0}
                             </span>
