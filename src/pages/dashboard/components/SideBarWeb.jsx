@@ -54,8 +54,8 @@ function SideBarWeb() {
             end
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <MdOutlineDashboard className="text-2xl" />
@@ -68,8 +68,8 @@ function SideBarWeb() {
             to={starting}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <RiRestartLine className="text-2xl" />
@@ -82,8 +82,8 @@ function SideBarWeb() {
             to={records}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <BiBookOpen className="text-2xl" />
@@ -96,8 +96,8 @@ function SideBarWeb() {
             to={profile}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <GiEgyptianProfile className="text-2xl" />
@@ -110,8 +110,8 @@ function SideBarWeb() {
             to={notificationsRoute}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <div className="relative flex items-center">
@@ -133,8 +133,8 @@ function SideBarWeb() {
             to={withdraw}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <BiMoneyWithdraw className="text-2xl" />
@@ -147,8 +147,8 @@ function SideBarWeb() {
             to={deposit}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <RiLuggageDepositLine className="text-2xl" />
@@ -161,8 +161,8 @@ function SideBarWeb() {
             to={events}
             className={({ isActive }) =>
               isActive
-                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
-                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition"
+                ? "text-primary font-bold flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
+                : "flex items-center gap-x-4 w-full px-5 py-3 hover:bg-primarylight hover:text-gray-800 rounded-lg transition"
             }
           >
             <BiCalendarEvent className="text-2xl" />

@@ -58,14 +58,11 @@ function App() {
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         {/* Public Routes */}
-        <Route path={homepage} element={<LoginLayout />}>
-          <Route index element={<Login />} />
-        </Route>
+        <Route path={homepage} element={<Landing />} />
         <Route path={login} element={<LoginLayout />}>
           <Route index element={<Login />} />
           <Route path={signup} element={<SignUp />} />
         </Route>
-        <Route path={landing} element={<Landing />} />
         <Route path={contact1} element={<ContactUs />} />
         <Route path={termsandconds} element={<TermsandCond />} />
         <Route path={loader} element={<Loader />} />

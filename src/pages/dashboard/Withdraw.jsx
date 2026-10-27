@@ -160,14 +160,14 @@ const Withdraw = () => {
                     <div className="flex space-x-4 mb-10 border-b">
                         <button
                             onClick={() => handleTabChange("withdraw")}
-                            className={`pb-2 border-b-2 ${activeTab === "withdraw" ? "border-blue-600 text-blue-600" : "border-transparent text-gray-500"
+                            className={`pb-2 border-b-2 ${activeTab === "withdraw" ? "border-primary text-primary" : "border-transparent text-gray-500"
                                 } focus:outline-none`}
                         >
                             Withdraw Now
                         </button>
                         <button
                             onClick={() => handleTabChange("history")}
-                            className={`pb-2 border-b-2 ${activeTab === "history" ? "border-blue-600 text-blue-600" : "border-transparent text-gray-500"
+                            className={`pb-2 border-b-2 ${activeTab === "history" ? "border-primary text-primary" : "border-transparent text-gray-500"
                                 } focus:outline-none`}
                         >
                             Withdraw History
@@ -196,7 +196,7 @@ const Withdraw = () => {
                                     value={amount}
                                     onChange={(e) => setAmount(e.target.value)}
                                     placeholder="Enter amount"
-                                    className="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                    className="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                 />
                             </div>
 
@@ -210,7 +210,7 @@ const Withdraw = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter password"
-                                    className="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                    className="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                 />
                             </div>
 

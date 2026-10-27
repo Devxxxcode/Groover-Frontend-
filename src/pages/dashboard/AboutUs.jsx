@@ -35,11 +35,11 @@ const AboutUs = () => {
                 </div>
                 <div className="ml-0 md:ml-12 space-y-4">
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                        Muzoup started with a friendship and grew to be a successful business that still retains its core values: putting great emphasis on
+                        Groover started with a friendship and grew to be a successful business that still retains its core values: putting great emphasis on
                         teamwork, transparency, commitment, consistency, quality, and always being ready to support and help both clients and colleagues.
                     </p>
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                        Founded in 2013 by professional affiliate marketers and webmasters with over 20 years of experience, Muzoup has developed into a
+                        Founded in 2013 by professional affiliate marketers and webmasters with over 20 years of experience, Groover has developed into a
                         trusted name in the industry. What started as a shared vision has now blossomed into a platform that blends technology and human
                         intelligence to deliver excellence.
                     </p>
@@ -64,7 +64,7 @@ const AboutUs = () => {
                         complex corporate culture."
                     </p>
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                        Muzoup's founders wanted to create something new, both for themselves and for the market. The result is a company with a professional
+                        Groover's founders wanted to create something new, both for themselves and for the market. The result is a company with a professional
                         IT department, experienced account managers, and a team of dedicated employees who strive to provide outstanding support and solutions
                         for advertisers and publishers.
                     </p>
@@ -102,12 +102,12 @@ const AboutUs = () => {
                 className="mb-12 p-6 md:p-8 bg-white rounded-xl shadow-lg"
             >
                 <div className="flex items-center mb-6">
-                    <FaHandshake className="text-blue-500 text-3xl md:text-4xl mr-4 flex-shrink-0" />
+                    <FaHandshake className="text-primary text-3xl md:text-4xl mr-4 flex-shrink-0" />
                     <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">Industry Recognition</h2>
                 </div>
                 <div className="ml-0 md:ml-12 space-y-4">
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                        Today, Muzoup is a well-known brand with a strong reputation and has been recognized by numerous bloggers and affiliates as one of the
+                        Today, Groover is a well-known brand with a strong reputation and has been recognized by numerous bloggers and affiliates as one of the
                         top adtech platforms. Our blend of innovative technology and human intelligence makes us a trusted partner in the industry.
                     </p>
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
@@ -130,7 +130,7 @@ const AboutUs = () => {
                 </div>
                 <div className="ml-0 md:ml-12 space-y-4">
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                        Muzoup exists to give every artist a fair shot at being heard. Whether you're just starting out or already a platinum-selling musician, our platform connects your music with a global network of bloggers, reviewers, playlisters, radio hosts, and industry tastemakers.
+                        Groover exists to give every artist a fair shot at being heard. Whether you're just starting out or already a platinum-selling musician, our platform connects your music with a global network of bloggers, reviewers, playlisters, radio hosts, and industry tastemakers.
                     </p>
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
                         With curators from over 100 countries, we've already helped generate more than 1.4 million pieces of coverage for artists worldwide.
@@ -154,7 +154,7 @@ const AboutUs = () => {
                         We're industry professionals who believe music promotion should be fair, affordable, and accessible. Every submission is listened to and vetted, ensuring that if your track makes it onto our platform, it gets genuine coverage—from reviews and interviews to playlists, radio plays, features, and influencer shoutouts.
                     </p>
                     <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                        Muzoup isn't just a service—it's a mission: to democratize music promotion and make sure grassroots and independent artists thrive. Because great music deserves to be discovered.
+                        Groover isn't just a service—it's a mission: to democratize music promotion and make sure grassroots and independent artists thrive. Because great music deserves to be discovered.
                     </p>
                 </div>
             </motion.section>

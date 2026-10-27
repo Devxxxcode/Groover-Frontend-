@@ -181,8 +181,8 @@ const Home = () => {
                     )}
                 </div>
                 <marquee direction="">
-                    Welcome to Muzoup! We collaborate with you to drive better exposure and
-                    create proven value with Muzoup platform strategy and product solutions.
+                    Welcome to Groover! We collaborate with you to drive better exposure and
+                    create proven value with Groover platform strategy and product solutions.
                 </marquee>
             </motion.div>
 

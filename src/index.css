@@ -13,7 +13,7 @@
 
   .circle {
   display: inline-block;
-  background-color: #072C3B;
+  background-color: #EC6345;
   height: 15px;
   width: 15px;
   border-radius: 50%;
@@ -97,8 +97,8 @@
   }
 
   .custom-checkbox:checked {
-    background-color: #072C3B; /* Red background when checked */
-    border-color: #072C3B; /* Match border color */
+    background-color: #EC6345; /* Red background when checked */
+    border-color: #EC6345; /* Match border color */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path d="M7.707 13.707a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414L7 11.586l7.293-7.293a1 1 0 011.414 1.414l-8 8z"/></svg>');
     background-size: 16px 16px; /* Adjust size of checkmark */
     background-repeat: no-repeat;
@@ -135,7 +135,7 @@
   }
 
   .bg-gradient {
-    background: linear-gradient(#072C3B, #F4ECDE);
+    background: linear-gradient(#EC6345, #F4ECDE);
   }
   .bg-gradient-red {
     background: linear-gradient(to bottom right, #ef2f3a, #570308);
@@ -190,7 +190,7 @@
   }
 
   .btn-primary {
-    background-color: #072C3B;
+    background-color: #EC6345;
     height: 55px;
     margin-top: 40px;
     margin-bottom: 44px;
@@ -223,7 +223,7 @@
 
 /* index.css */
 .bg-primary {
-  background-color: #072C3B; /* Use the exact color code you have */
+  background-color: #EC6345; /* Use the exact color code you have */
 }
 
 .btn-primary {
@@ -231,7 +231,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #072C3B/20; /* Darken on hover */
+  background-color: #EC6345/20; /* Darken on hover */
 }
 
 .flex {

@@ -68,7 +68,7 @@ const ContactUs = () => {
             {/* Logo and Heading */}
             <div className="text-center mb-10">
                 <div className="flex flex-col items-center">
-                    <img src={logo} alt="Muzoup Logo" className="w-48 h-auto mb-4" />                    <FaHeadset className="text-6xl text-gray-300 mb-4" />
+                    <img src={logo} alt="Groover Logo" className="w-48 h-auto mb-4" />                    <FaHeadset className="text-6xl text-gray-300 mb-4" />
                 </div>
                 <h1 className="text-2xl font-bold text-gray-700">Welcome to Customer Service</h1>
                 <p className="text-gray-600 mt-2">
@@ -117,7 +117,7 @@ const ContactUs = () => {
                                 console.error("Telegram username is missing or invalid.");
                             }
                         }}
-                        className="w-full bg-blue-500 text-white py-2 rounded-full flex items-center justify-center gap-2 hover:bg-blue-600 transition duration-200"
+                        className="w-full bg-primary text-white py-2 rounded-full flex items-center justify-center gap-2 hover:bg-[#d9583b] transition duration-200"
                     >
                         <FaTelegramPlane />
                         Telegram Chat

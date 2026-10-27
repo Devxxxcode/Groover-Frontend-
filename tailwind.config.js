@@ -21,10 +21,10 @@ export default {
         about: 'url("/src/assets/img/outline-text/about.svg")',
       },
       colors: {
-        background: '#eef4f6',
-        primary: '#072C3B', // updated to match the provided red color
-        primarylight: '#eef4f6', // lighter variant of primary
-        secondary: '#eef4f6',
+        background: '#F7F6F0',
+        primary: '#EC6345', // Groover orange
+        primarylight: '#FDEEE9', // light tint of primary
+        secondary: '#FBF3EE',
         card: '#FFFFFF',
 
         hint: "#605E5E",
@@ -42,8 +42,8 @@ export default {
         ylightshadow: '#FFFFFF',
 
         accent: {
-          DEFAULT: '#ac6b34',
-          hover: '#925a2b',
+          DEFAULT: '#EC6345',
+          hover: '#BA5225',
         },
         paragraph: '#878e99',
       },

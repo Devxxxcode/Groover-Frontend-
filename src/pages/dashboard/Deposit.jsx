@@ -254,7 +254,7 @@ const Deposit = () => {
                                 <button
                                     onClick={() => handleTabChange("deposit")}
                                     className={`pb-2 border-b-2 ${activeTab === "deposit"
-                                        ? "border-blue-600 text-blue-600"
+                                        ? "border-primary text-primary"
                                         : "border-transparent text-gray-500"
                                         } focus:outline-none`}
                                 >
@@ -263,7 +263,7 @@ const Deposit = () => {
                                 <button
                                     onClick={() => handleTabChange("history")}
                                     className={`pb-2 border-b-2 ${activeTab === "history"
-                                        ? "border-blue-600 text-blue-600"
+                                        ? "border-primary text-primary"
                                         : "border-transparent text-gray-500"
                                         } focus:outline-none`}
                                 >
@@ -304,7 +304,7 @@ const Deposit = () => {
                                             step="0.01"
                                             onChange={(e) => setAmount(e.target.value)}
                                             placeholder="Enter amount"
-                                            className="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                            className="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                             required
                                         />
                                     </div>

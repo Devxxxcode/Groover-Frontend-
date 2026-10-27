@@ -1,5 +1,5 @@
 export const homepage = "/";
-export const landing = "/home";
+export const landing = "/";
 export const login = "/login";
 export const signup = "signup";
 export const loader = "loader";

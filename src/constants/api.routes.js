@@ -1,5 +1,5 @@
 
-export const BASEURL = "https://mososoup-api-backend.onrender.com"
+export const BASEURL = "https://groover-backend-code.onrender.com"
 
 // export const BASEURL = "http://127.0.0.1:8000";
 

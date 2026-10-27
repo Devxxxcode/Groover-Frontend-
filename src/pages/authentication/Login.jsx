@@ -112,14 +112,14 @@ const Login = () => {
                     <button
                         type="button"
                         onClick={() => navigate(landing)}
-                        className="inline-flex items-center rounded-full border border-[#072C3B] bg-[#072C3B] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B1126]"
+                        className="inline-flex items-center rounded-full border border-[#EC6345] bg-[#EC6345] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#221917]"
                     >
                         Back to Home
                     </button>
                     <button
                         type="button"
                         onClick={() => navigate(landing)}
-                        className="rounded-full border border-[#072C3B]/20 bg-white/85 px-4 py-2 text-sm font-medium text-[#072C3B] shadow-sm transition hover:border-[#072C3B] hover:bg-white"
+                        className="rounded-full border border-[#EC6345]/20 bg-white/85 px-4 py-2 text-sm font-medium text-[#EC6345] shadow-sm transition hover:border-[#EC6345] hover:bg-white"
                     >
                         Visit Home Page
                     </button>
@@ -139,7 +139,7 @@ const Login = () => {
                     className="mx-auto mb-4 w-[12rem] cursor-pointer"
                     onClick={() => navigate(landing)}
                 />
-                <h1 className="text-2xl font-semibold text-center mb-4 text-[#072C3B]/80">Login</h1>
+                <h1 className="text-2xl font-semibold text-center mb-4 text-[#EC6345]/80">Login</h1>
 
                 {/* Login Form */}
                 <form className="space-y-6" onSubmit={handleLogin}>
@@ -199,7 +199,7 @@ const Login = () => {
                                 type="checkbox"
                                 checked={rememberMe}
                                 onChange={(e) => setRememberMe(e.target.checked)}
-                                className="h-4 w-4 text-[#0B1126] focus:ring-[#0B1126] border-gray-300 rounded"
+                                className="h-4 w-4 text-[#221917] focus:ring-[#221917] border-gray-300 rounded"
                             />
                             <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
                                 Remember me
@@ -210,7 +210,7 @@ const Login = () => {
                     <div className="text-left">
                         <p className="text-gray-600 text-sm">
                             Forgot username/password??{" "}
-                            <a href="/contact" className="text-[#0B1126] font-medium">
+                            <a href="/contact" className="text-[#221917] font-medium">
                                 Reset
                             </a>
                         </p>
@@ -218,7 +218,7 @@ const Login = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-[#0B1126] text-white py-3 rounded-lg font-semibold hover:bg-[#072C3B]/80 transition duration-200 flex justify-center items-center"
+                        className="w-full bg-[#221917] text-white py-3 rounded-lg font-semibold hover:bg-[#EC6345]/80 transition duration-200 flex justify-center items-center"
                         disabled={loading}
                     >
                         {loading ? <Loader /> : "Login"}
@@ -229,7 +229,7 @@ const Login = () => {
                 <div className="mt-6 text-center">
                     <p className="text-gray-600 text-sm mt-2">
                         Don&apos;t have an account?{" "}
-                        <a href="/login/signup" className="text-[#0B1126] font-medium">
+                        <a href="/login/signup" className="text-[#221917] font-medium">
                             Create now!
                         </a>
                     </p>

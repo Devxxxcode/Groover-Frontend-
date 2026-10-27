@@ -500,7 +500,7 @@ const PersonalInfo = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={toggleLoginPasswordModal}
-                    className="bg-blue-600 text-white font-semibold py-4 px-6 rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                    className="bg-primary text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#d9583b] transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
                 >
                     <FaLock className="text-lg" />
                     <span>Change Login Password</span>
@@ -539,7 +539,7 @@ const PersonalInfo = () => {
                             ✕
                         </button>
                         <div className="text-center mb-6">
-                            <FaLock className="text-4xl text-blue-600 mx-auto mb-3" />
+                            <FaLock className="text-4xl text-primary mx-auto mb-3" />
                             <h2 className="text-2xl font-bold text-gray-800">Change Login Password</h2>
                             <p className="text-gray-600 mt-2">Enter your current and new password</p>
                         </div>
@@ -551,7 +551,7 @@ const PersonalInfo = () => {
                                     name="current_password"
                                     value={passwordData.current_password}
                                     onChange={handlePasswordChange}
-                                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                     placeholder="Enter current password"
                                 />
                             </div>
@@ -562,7 +562,7 @@ const PersonalInfo = () => {
                                     name="new_password"
                                     value={passwordData.new_password}
                                     onChange={handlePasswordChange}
-                                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                     placeholder="Enter new password"
                                 />
                             </div>
@@ -573,7 +573,7 @@ const PersonalInfo = () => {
                                     name="confirm_new_password"
                                     value={passwordData.confirm_new_password}
                                     onChange={handlePasswordChange}
-                                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                     placeholder="Confirm new password"
                                 />
                             </div>
@@ -582,7 +582,7 @@ const PersonalInfo = () => {
                                 whileTap={{ scale: 0.98 }}
                                 type="button"
                                 onClick={handleChangePassword}
-                                className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 mt-4 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-[#d9583b] transition-all duration-200 mt-4 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                 disabled={isSavingPassword}
                             >
                                 {isSavingPassword ? (

@@ -33,7 +33,7 @@ const Terms = () => {
             {/* 2 */}
             <motion.section {...fadeIn("up", 2)} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                 <div className="flex items-center mb-3">
-                    <FaTasks className="text-blue-500 text-2xl mr-3" />
+                    <FaTasks className="text-primary text-2xl mr-3" />
                     <h2 className="text-xl font-semibold text-gray-800">2. Withdrawal Requirement</h2>
                 </div>
                 <p>Each user must complete all music album data submission tasks before they can meet the system withdrawal requirements.</p>
@@ -42,7 +42,7 @@ const Terms = () => {
             {/* 3 */}
             <motion.section {...fadeIn("up", 3)} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                 <div className="flex items-center mb-3">
-                    <FaLock className="text-indigo-500 text-2xl mr-3" />
+                    <FaLock className="text-primary text-2xl mr-3" />
                     <h2 className="text-xl font-semibold text-gray-800">3. Withdrawals</h2>
                 </div>
                 <p>To avoid capital loss, all withdrawals are automatically processed by the system, not manually.</p>
@@ -78,7 +78,7 @@ const Terms = () => {
             {/* 7 */}
             <motion.section {...fadeIn("up", 7)} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                 <div className="flex items-center mb-3">
-                    <FaTasks className="text-teal-500 text-2xl mr-3" />
+                    <FaTasks className="text-primary text-2xl mr-3" />
                     <h2 className="text-xl font-semibold text-gray-800">7. Album Assignment</h2>
                 </div>
                 <p>Users can only get one three-in-one music album combination for each task. The system will randomly assign albums. In the combination album, users have a higher probability of getting 1–3 music albums.</p>
@@ -87,7 +87,7 @@ const Terms = () => {
             {/* 8 */}
             <motion.section {...fadeIn("up", 8)} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                 <div className="flex items-center mb-3">
-                    <FaLock className="text-indigo-500 text-2xl mr-3" />
+                    <FaLock className="text-primary text-2xl mr-3" />
                     <h2 className="text-xl font-semibold text-gray-800">8. Security Code</h2>
                 </div>
                 <p>Do not set simple passwords such as birthdays, ID numbers, or phone numbers. Use a more complex password. If forgotten, reset via online customer service and immediately change it yourself afterwards.</p>
@@ -159,7 +159,7 @@ const Terms = () => {
             {/* 16 */}
             <motion.section {...fadeIn("up", 16)} className="md:mb-6 mb-52 p-4 bg-white rounded-lg shadow-md">
                 <div className="flex items-center mb-3">
-                    <FaUserShield className="text-blue-500 text-2xl mr-3" />
+                    <FaUserShield className="text-primary text-2xl mr-3" />
                     <h2 className="text-xl font-semibold text-gray-800">16. Tax Regulations</h2>
                 </div>
                 <p>According to the regulations of different regional governments on our platform, all users with personal funds exceeding 50,000 USDT/USDC are required to pay personal income tax of 20%-40% of the account funds before the withdrawal is processed, but the personal income tax will be refunded to your work account 2 hours after the withdrawal is completed.</p>

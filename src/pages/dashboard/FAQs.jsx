@@ -55,7 +55,7 @@ const FAQs = () => {
                 className="mb-10 p-6 bg-white rounded-lg shadow-md"
             >
                 <div className="flex items-center mb-4">
-                    <FaDollarSign className="text-blue-500 text-3xl mr-3" />
+                    <FaDollarSign className="text-primary text-3xl mr-3" />
                     <h2 className="text-2xl font-semibold text-gray-800">2. Withdrawal</h2>
                 </div>
                 <ul className="ml-8 list-disc list-inside space-y-2">
@@ -121,7 +121,7 @@ const FAQs = () => {
                 className="mb-10 p-6 bg-white rounded-lg shadow-md"
             >
                 <div className="flex items-center mb-4">
-                    <FaBoxes className="text-teal-500 text-3xl mr-3" />
+                    <FaBoxes className="text-primary text-3xl mr-3" />
                     <h2 className="text-2xl font-semibold text-gray-800">5. Combination Music Albums</h2>
                 </div>
                 <ul className="ml-8 list-disc list-inside space-y-2">
@@ -139,7 +139,7 @@ const FAQs = () => {
                 className="mb-10 p-6 bg-white rounded-lg shadow-md"
             >
                 <div className="flex items-center mb-4">
-                    <FaMoneyCheckAlt className="text-indigo-500 text-3xl mr-3" />
+                    <FaMoneyCheckAlt className="text-primary text-3xl mr-3" />
                     <h2 className="text-2xl font-semibold text-gray-800">6. Deposit</h2>
                 </div>
                 <ul className="ml-8 list-disc list-inside space-y-2">
