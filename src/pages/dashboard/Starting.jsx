@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { GiCrown } from "react-icons/gi";
 import { motion } from "framer-motion";
@@ -76,6 +76,12 @@ const ResponsiveSpinner = ({ size = "default" }) => {
 //         opacity: 0,
 //     }),
 // };
+
+// Small, optimised version of a Cloudinary image for the grid
+const thumb = (url) =>
+    typeof url === "string" && url.includes("/image/upload/") && !url.includes("/upload/w_")
+        ? url.replace("/image/upload/", "/image/upload/w_320,h_320,c_fill,q_auto,f_auto/")
+        : url;
 
 const Starting = () => {
     const dispatch = useDispatch();
@@ -167,37 +173,39 @@ const Starting = () => {
     }, [dispatch, products]);
 
     // Shuffle products whenever products change
+    // Use small thumbnails for the grid
+    const thumbProducts = useMemo(
+        () => (products || []).map((p) => ({ ...p, image: thumb(p.image) })),
+        [products]
+    );
+
     useEffect(() => {
-        if (products && products.length > 0) {
-            setShuffledProducts(shuffleArray(products));
+        if (thumbProducts.length > 0) {
+            setShuffledProducts(shuffleArray(thumbProducts));
         }
-    }, [products]);
+    }, [thumbProducts]);
 
     // Function to preload and swap images smoothly
     const preloadAndSwapImages = (newProducts) => {
-        const newLoadedImages = {};
-        let loadedCount = 0;
-        const totalImages = newProducts.length;
-        
-        newProducts.forEach((product) => {
+        // Only the first slide needs to be ready before we swap
+        const firstGroup = newProducts.slice(0, 7);
+        let done = 0;
+        const finish = () => {
+            done++;
+            if (done === firstGroup.length) {
+                setLoadedImages((prev) => {
+                    const next = { ...prev };
+                    firstGroup.forEach((p) => { next[p.image] = true; });
+                    return next;
+                });
+                setShuffledProducts(newProducts);
+            }
+        };
+        firstGroup.forEach((product) => {
             const img = new Image();
             img.src = product.image || "https://via.placeholder.com/150";
-            img.onload = () => {
-                newLoadedImages[product.image] = true;
-                loadedCount++;
-                // When all images are loaded, swap them
-                if (loadedCount === totalImages) {
-                    setLoadedImages(prev => ({ ...prev, ...newLoadedImages }));
-                    setShuffledProducts(newProducts);
-                }
-            };
-            img.onerror = () => {
-                loadedCount++;
-                if (loadedCount === totalImages) {
-                    setLoadedImages(prev => ({ ...prev, ...newLoadedImages }));
-                    setShuffledProducts(newProducts);
-                }
-            };
+            img.onload = finish;
+            img.onerror = finish;
         });
     };
 
@@ -205,53 +213,42 @@ const Starting = () => {
     useEffect(() => {
         if (products && products.length > 0 && !isInitialLoad) {
             const reshuffleInterval = setInterval(() => {
-                const newShuffledProducts = shuffleArray(products);
+                const newShuffledProducts = shuffleArray(thumbProducts);
                 preloadAndSwapImages(newShuffledProducts);
             }, 20000); // Reshuffle every 20 seconds
 
             return () => clearInterval(reshuffleInterval);
         }
-    }, [products, isInitialLoad]);
+    }, [thumbProducts, isInitialLoad]);
 
     // New state for tracking loaded images
     const [loadedImages, setLoadedImages] = useState({});
 
-    // Preload images when shuffled products change
+    // Show the page as soon as the first slide's images are in (max 3s wait)
     useEffect(() => {
-        if (shuffledProducts && shuffledProducts.length > 0) {
-            // Only show loading state on initial load, not during reshuffle
-            if (isInitialLoad) {
-                setImagesReady(false);
-            }
-            
-            let loadedCount = 0;
-            const totalImages = shuffledProducts.length;
-            
-            shuffledProducts.forEach((product) => {
-                const img = new Image();
-                img.src = product.image || "https://via.placeholder.com/150";
-                img.onload = () => {
-                    setLoadedImages((prev) => ({
-                        ...prev,
-                        [product.image]: true,
-                    }));
-                    loadedCount++;
-                    // Only set images ready when all images are loaded
-                    if (loadedCount === totalImages) {
-                        setImagesReady(true);
-                        setIsInitialLoad(false); // Mark initial load as complete
-                    }
-                };
-                img.onerror = () => {
-                    // Handle image load error
-                    loadedCount++;
-                    if (loadedCount === totalImages) {
-                        setImagesReady(true);
-                        setIsInitialLoad(false);
-                    }
-                };
-            });
-        }
+        if (!isInitialLoad || shuffledProducts.length === 0) return undefined;
+        const firstGroup = shuffledProducts.slice(0, 7);
+        let done = 0;
+        let finished = false;
+        const markReady = () => {
+            if (finished) return;
+            finished = true;
+            setImagesReady(true);
+            setIsInitialLoad(false);
+        };
+        const timer = setTimeout(markReady, 3000);
+        firstGroup.forEach((product) => {
+            const img = new Image();
+            img.src = product.image || "https://via.placeholder.com/150";
+            const onDone = (ok) => {
+                if (ok) setLoadedImages((prev) => ({ ...prev, [product.image]: true }));
+                done++;
+                if (done === firstGroup.length) markReady();
+            };
+            img.onload = () => onDone(true);
+            img.onerror = () => onDone(false);
+        });
+        return () => clearTimeout(timer);
     }, [shuffledProducts, isInitialLoad]);
 
     // Utility to check if an image is loaded
@@ -277,6 +274,21 @@ const Starting = () => {
 
     const groupedProducts = shuffledProducts?.length > 0 ? groupProducts(shuffledProducts, 7) : [[]];
     const totalSlides = groupedProducts.length;
+
+    // Load the current and next slide's images on demand instead of all 500+ up front
+    useEffect(() => {
+        [groupedProducts[currentSlide], groupedProducts[(currentSlide + 1) % totalSlides]]
+            .filter(Boolean)
+            .flat()
+            .forEach((product) => {
+                if (!product?.image || loadedImages[product.image]) return;
+                const img = new Image();
+                img.src = product.image;
+                img.onload = () => setLoadedImages((prev) => ({ ...prev, [product.image]: true }));
+                img.onerror = () => setLoadedImages((prev) => ({ ...prev, [product.image]: true }));
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentSlide, shuffledProducts]);
 
     const handleNextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
