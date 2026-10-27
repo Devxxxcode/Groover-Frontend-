@@ -378,14 +378,23 @@ const Home = () => {
                 )}
             </div>
             <div className="md:pb-0 pb-28 md:px-0 px-2">
-                <iframe
-                    style={{ borderRadius: '12px' }}
-                    src="https://open.spotify.com/embed/playlist/52ryhemOPZrgqWE98Sr3kl?utm_source=generator"
-                    width="100%"
-                    height="512"
-                    allowFullScreen={false}
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                />
+                <div className="rounded-2xl bg-gradient-to-br from-primary to-[#c9472b] p-4 shadow-lg md:p-5">
+                    <div className="mb-3 flex items-center justify-between text-white">
+                        <div>
+                            <h2 className="text-lg font-bold">Groover Playlist</h2>
+                            <p className="text-sm text-white/80">Keep the music on while you work.</p>
+                        </div>
+                    </div>
+                    <iframe
+                        title="Spotify playlist"
+                        style={{ borderRadius: '12px' }}
+                        src="https://open.spotify.com/embed/playlist/52ryhemOPZrgqWE98Sr3kl?utm_source=generator&theme=0"
+                        width="100%"
+                        height="512"
+                        allowFullScreen={false}
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    />
+                </div>
             </div>
             <BottomNavMobile className="md:hidden" />
         </div>
