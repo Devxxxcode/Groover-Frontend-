@@ -19,7 +19,7 @@ const Loader = ({ fullScreen = false, size = "default" }) => {
                 </div>
             </div>
             
-            <style jsx>{`
+            <style>{`
                 .circle {
                     animation: bounce 1.4s ease-in-out infinite both;
                 }

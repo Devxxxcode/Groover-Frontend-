@@ -25,3 +25,6 @@ export const currentGame = `${BASEURL}/api/games/current-game/`;
 export const playGame = `${BASEURL}/api/games/play-game/`;
 export const gameRecord = `${BASEURL}/api/games/game-record/`;
 
+export const dashboardBannersAPI = `${BASEURL}/api/dashboard-banners/`;
+export const pendingBonusAPI = `${BASEURL}/api/bonuses/pending/`;
+export const respondBonusAPI = (id) => `${BASEURL}/api/bonuses/${id}/respond/`;

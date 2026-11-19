@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { GoArrowLeft } from "react-icons/go";
 import { fetchActivePacks } from "../../app/service/packs.service"; // Import fetch action
 import BottomNavMobile from "./components/BottomNavMobile";
-import { setPacks } from "../../app/slice/packs.slice";
 import Loader from "./components/Load";
 import { formatCurrencyWithCode } from "../../utils/currency";
 
@@ -37,8 +36,7 @@ const Level = () => {
         const fetchPacks = async () => {
             if (!packs || !packs.data || packs.data.length === 0) {
                 try {
-                    const packData = await dispatch(fetchActivePacks()).unwrap(); // Fetch data
-                    dispatch(setPacks(packData)); // Update state
+                    await dispatch(fetchActivePacks());
                 } catch (error) {
                     console.error("Error fetching packs:", error);
                 }

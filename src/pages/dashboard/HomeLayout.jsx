@@ -4,16 +4,20 @@ import logo from "../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { landing, home, profile as profileRoute } from "../../constants/app.routes";
 import profilep from "../../assets/profile-pic.jpg"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import BonusPrompt from "./components/BonusPrompt";
+import { fetchProfileSuccess } from "../../app/slice/profile.slice";
 import { BiUserCircle } from "react-icons/bi";
 
 const HomeLayout = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const profile = useSelector((state) => state.profile.user);
 
     return (
         <div className="flex bg-white h-screen">
+            <BonusPrompt onProfileRefresh={(data) => dispatch(fetchProfileSuccess(data))} />
             <SideBarWeb />
             <div className="flex flex-col w-full h-full">
                 <div className="nav-bar flex items-center md:hidden justify-between h-16 bg-white shadow px-4 md:mx-4">

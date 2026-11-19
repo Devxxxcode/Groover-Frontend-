@@ -1149,7 +1149,7 @@ const Starting = () => {
             <BottomNavMobile className="md:hidden" />
 
             {/* Custom CSS for Start button */}
-            <style jsx>{`
+            <style>{`
                 .start-button {
                     width: 80px;
                     height: 80px;

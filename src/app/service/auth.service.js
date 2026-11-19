@@ -119,7 +119,8 @@ const authService = {
     fetchProfile: async () => {
         try {
             const response = await axiosInstance.get(meAPI);
-            const profile = response.data.data;
+            const payload = response?.data?.data;
+            const profile = payload?.data || payload || null;
             store.dispatch(setUserProfile(profile));
             console.log(profile);
             return { success: true, data: profile };

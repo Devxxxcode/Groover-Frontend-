@@ -23,6 +23,8 @@ import { toast } from "sonner";
 import { fetchProfileFailure, fetchProfileStart, fetchProfileSuccess, setWelcomeState, toggleWelcomeState } from "../../app/slice/profile.slice";
 import authService from "../../app/service/auth.service";
 import ErrorHandler from "../../app/ErrorHandler";
+import axiosInstance from "../../app/axiosConfig";
+import { dashboardBannersAPI } from "../../constants/api.routes";
 import { fetchNotifications } from "../../app/service/notifications.service";
 import carouselImage1 from "../../assets/carousel/1.jpeg";
 import carouselImage2 from "../../assets/carousel/2.jpeg";
@@ -61,6 +63,29 @@ const Home = () => {
     // eslint-disable-next-line no-unused-vars
 
     const profile = useSelector((state) => state.profile.user);
+
+    // Hero images managed from the admin (Dashboard Banners). Used when no
+    // custom hero video has been uploaded in the admin settings.
+    const [bannerImages, setBannerImages] = useState([]);
+    const [bannerIndex, setBannerIndex] = useState(0);
+    useEffect(() => {
+        let active = true;
+        axiosInstance
+            .get(dashboardBannersAPI)
+            .then((res) => {
+                if (!active) return;
+                const payload = res?.data?.data;
+                const list = Array.isArray(payload) ? payload : payload?.results || [];
+                setBannerImages(list.map((b) => b.image).filter(Boolean));
+            })
+            .catch(() => {});
+        return () => { active = false; };
+    }, []);
+    useEffect(() => {
+        if (bannerImages.length <= 1) return undefined;
+        const t = setInterval(() => setBannerIndex((i) => (i + 1) % bannerImages.length), 5000);
+        return () => clearInterval(t);
+    }, [bannerImages.length]);
     const { notifications } = useSelector((state) => state.notifications);
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -188,28 +213,52 @@ const Home = () => {
 
             {/* Video Section */}
             <div className="relative w-full md:h-[31rem] h-[15rem] overflow-hidden">
-                {isVideoLoading && (
-                    <div className="animate-pulse bg-gray-100 w-full h-full rounded-lg" />
+                {!profile?.settings?.video && bannerImages.length > 0 ? (
+                    <>
+                        <img
+                            src={bannerImages[bannerIndex % bannerImages.length]}
+                            alt=""
+                            className="w-full h-full object-cover"
+                        />
+                        {bannerImages.length > 1 && (
+                            <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+                                {bannerImages.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        aria-label={`Show image ${i + 1}`}
+                                        onClick={() => setBannerIndex(i)}
+                                        className={`h-2 rounded-full transition-all ${i === bannerIndex % bannerImages.length ? "w-6 bg-primary" : "w-2 bg-white/70"}`}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <>
+                        {isVideoLoading && (
+                            <div className="animate-pulse bg-gray-100 w-full h-full rounded-lg" />
+                        )}
+                        <video
+                            className="w-full h-full object-fill"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            onLoadedData={() => setVideoLoading(false)}
+                            onError={(e) => {
+                                console.error("Video failed to load:", e);
+                                setVideoLoading(false);
+                                e.target.src = videoSource; // Fallback to default video
+                            }}
+                        >
+                            <source
+                                src={profile?.settings?.video || videoSource}
+                                type="video/mp4"
+                            />
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </>
                 )}
-                <video
-                    className="w-full h-full object-fill"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    onLoadedData={() => setVideoLoading(false)}
-                    onError={(e) => {
-                        console.error("Video failed to load:", e);
-                        setVideoLoading(false);
-                        e.target.src = videoSource; // Fallback to default video
-                    }}
-                >
-                    <source
-                        src={profile?.settings?.video || videoSource}
-                        type="video/mp4"
-                    />
-                    Your browser does not support HTML5 video.
-                </video>
             </div>
 
             {/* Fixed Marquee Carousel Section */}
@@ -248,7 +297,7 @@ const Home = () => {
             </div>
 
             {/* Add custom animation in CSS */}
-            <style jsx>{`
+            <style>{`
                 @keyframes marquee-smooth {
                     0% { transform: translateX(0%); }
                     100% { transform: translateX(-100%); }
