@@ -191,13 +191,13 @@ const Records = () => {
                                     className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md hover:border-gray-200"
                                 >
                                     <div className="p-4 md:p-6">
-                                        <div className="flex items-start space-x-4 md:space-x-6">
+                                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
                                             {/* Product Images */}
                                             <div className="flex flex-wrap gap-3 flex-shrink-0">
                                                 {record.products.map((product) => (
                                                     <div
                                                         key={product.id}
-                                                        className="w-20 h-24 md:w-24 md:h-28 flex flex-col items-center"
+                                                        className="flex w-20 flex-col items-center md:w-24"
                                                     >
                                                         <img
                                                             src={product.image}
@@ -212,9 +212,9 @@ const Records = () => {
                                             </div>
 
                                             {/* Product Info */}
-                                            <div className="flex-grow min-w-0">
-                                                <div className="flex items-start justify-between mb-3">
-                                                    <div className="flex-1 min-w-0 pr-4">
+                                            <div className="w-full min-w-0 flex-grow">
+                                                <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
+                                                    <div className="min-w-[10rem] flex-1 pr-2">
                                                         <p className="text-gray-500 text-xs md:text-sm mb-1">
                                                             {new Date(record.updated_at).toLocaleString()}
                                                         </p>
@@ -224,7 +224,7 @@ const Records = () => {
                                                     </div>
                                                     
                                                     {/* Status Badge and Submit Button */}
-                                                    <div className="flex items-center space-x-2 flex-shrink-0">
+                                                    <div className="flex flex-shrink-0 items-center gap-2">
                                                         <div className={`px-2 py-1 rounded-full text-xs font-semibold ${statusColors[status]}`}>
                                                             {status}
                                                         </div>
