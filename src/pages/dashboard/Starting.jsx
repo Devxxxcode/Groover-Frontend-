@@ -919,10 +919,10 @@ const Starting = () => {
                         </button>
 
                         {/* Modal Title */}
-                        <h2 className="text-2xl font-bold text-center mb-4 sm:mb-6">Task Submission</h2>
+                        <h2 className="text-2xl font-bold text-center mb-4 sm:mb-6">Submit Your Review</h2>
 
                         {/* Product Images and Details */}
-                        <div className="flex items-start sm:space-x-6 mb-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6 mb-4">
                             {/* Product Images */}
                             <div className="flex space-x-2 sm:space-x-4 overflow-x-auto w-full sm:w-auto">
                                 {currentGame?.products?.slice(0, 3).map((product) => (
@@ -937,7 +937,7 @@ const Starting = () => {
                             </div>
 
                             {/* Product Details */}
-                            <div className="text-right flex-grow md:w-1/4 w-auto">
+                            <div className="w-full text-left sm:w-auto sm:flex-grow sm:text-right md:w-1/4">
                                 {currentGame?.products?.slice(0, 3).map((product) => (
                                     <p key={product?.id} className="text-sm sm:text-lg font-semibold">
                                         {product?.name}
@@ -951,7 +951,7 @@ const Starting = () => {
                                     {/* Comments Section */}
                                     <textarea
                                         placeholder="Leave your comments here..."
-                                        className="w-full mt-3 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                                        className="w-full mt-3 min-h-[72px] p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                         value={comments}
                                         onChange={(e) => setComments(e.target.value)}
                                     ></textarea>
@@ -1053,10 +1053,10 @@ const Starting = () => {
                         </button>
 
                         {/* Modal Title */}
-                        <h2 className="text-2xl font-bold text-center mb-4 sm:mb-6">Task Submission</h2>
+                        <h2 className="text-2xl font-bold text-center mb-4 sm:mb-6">Submit Your Review</h2>
 
                         {/* Product Images and Details */}
-                        <div className="flex items-start sm:space-x-6 mb-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6 mb-4">
                             {/* Product Images */}
                             <div className="flex space-x-2 sm:space-x-4 overflow-x-auto w-full sm:w-auto">
                                 {currentGame?.products?.slice(0, 3).map((product) => (
@@ -1071,7 +1071,7 @@ const Starting = () => {
                             </div>
 
                             {/* Product Details */}
-                            <div className="text-right flex-grow md:w-1/4 w-auto">
+                            <div className="w-full text-left sm:w-auto sm:flex-grow sm:text-right md:w-1/4">
                                 {currentGame?.products?.slice(0, 3).map((product) => (
                                     <p key={product?.id} className="text-sm sm:text-lg font-semibold">
                                         {product?.name}
@@ -1085,7 +1085,7 @@ const Starting = () => {
                                     {/* Comments Section */}
                                     <textarea
                                         placeholder="Leave your comments here..."
-                                        className="w-full mt-3 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                                        className="w-full mt-3 min-h-[72px] p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                         value={comments}
                                         onChange={(e) => setComments(e.target.value)}
                                     ></textarea>

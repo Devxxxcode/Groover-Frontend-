@@ -7,6 +7,8 @@ import profilep from "../../assets/profile-pic.jpg"
 import { useSelector, useDispatch } from "react-redux";
 import BonusPrompt from "./components/BonusPrompt";
 import { fetchProfileSuccess } from "../../app/slice/profile.slice";
+import authService from "../../app/service/auth.service";
+import { useEffect } from "react";
 import { BiUserCircle } from "react-icons/bi";
 
 const HomeLayout = () => {
@@ -14,6 +16,16 @@ const HomeLayout = () => {
     const dispatch = useDispatch();
 
     const profile = useSelector((state) => state.profile.user);
+
+    // Pages opened directly (refresh, shared link) have no profile yet:
+    // load it here so the header shows the user's name on every page.
+    useEffect(() => {
+        if (!profile) {
+            authService.fetchProfile().then((res) => {
+                if (res.success) dispatch(fetchProfileSuccess(res.data));
+            });
+        }
+    }, [dispatch, profile]);
 
     return (
         <div className="flex bg-white h-screen">

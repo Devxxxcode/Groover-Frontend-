@@ -52,6 +52,7 @@ import Loader from "./pages/Loader";
 import { Toaster } from "sonner";
 import TermsandCond from "./pages/dashboard/Termsandcond";
 import Landing from "./pages/landing-page/Landing";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -94,6 +95,7 @@ function App() {
             </Route>
           </Route>
         </Route>
+              <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
         position={"top-right"}

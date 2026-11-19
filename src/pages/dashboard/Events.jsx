@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import event1 from "../../assets/event1.png";
-import event2 from "../../assets/event2.jpg";
-import event3 from "../../assets/event3.jpg";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../app/service/event.service";
@@ -21,10 +18,12 @@ const Events = () => {
     }, [dispatch]);
 
     const handleNext = () => {
+        if (!events?.length) return;
         setCurrent((prev) => (prev + 1) % events.length);
     };
 
     const handlePrev = () => {
+        if (!events?.length) return;
         setCurrent((prev) => (prev - 1 + events.length) % events.length);
     };
 
@@ -43,38 +42,50 @@ const Events = () => {
                         </button>
                     </div>
 
-                    {/* Navigation Buttons */}
-                    <div className="flex justify-between absolute top-1/2 transform -translate-y-1/2 -translate-x-3 w-full px-4 z-10">
-                        <button onClick={handlePrev} className="text-white bg-black bg-opacity-50 px-3 py-1 rounded-full"><GoArrowLeft /></button>
-                        <button onClick={handleNext} className="text-white bg-black bg-opacity-50 px-3 py-1 rounded-full"><GoArrowRight /></button>
-                    </div>
+                    {error ? (
+                        <p className="py-16 text-center text-gray-500">We couldn&apos;t load events right now. Please try again later.</p>
+                    ) : !events || events.length === 0 ? (
+                        <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white py-20 text-center shadow-sm">
+                            <h2 className="text-xl font-bold text-gray-800">No events right now</h2>
+                            <p className="mt-2 text-sm text-gray-500">Check back soon. New events will show up here.</p>
+                        </div>
+                    ) : (
+                        <>
+                        {/* Navigation Buttons */}
+                        <div className={`${events.length > 1 ? "flex" : "hidden"} justify-between absolute top-1/2 transform -translate-y-1/2 -translate-x-3 w-full px-4 z-10`}>
+                            <button onClick={handlePrev} className="text-white bg-black bg-opacity-50 px-3 py-1 rounded-full"><GoArrowLeft /></button>
+                            <button onClick={handleNext} className="text-white bg-black bg-opacity-50 px-3 py-1 rounded-full"><GoArrowRight /></button>
+                        </div>
 
-                    {/* Image Display with Animation */}
-                    <motion.div
-                        key={current}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.6 }}
-                        className="flex justify-center items-center w-full h-[700px] md:h-[500px]"
-                    >
-                        <img
-                            src={events[current]?.image}
-                            alt={`Event ${current + 1}`}
-                            className={` object-contain rounded-lg w-full h-full`}
-                        />
-                    </motion.div>
+                        {/* Image Display with Animation */}
+                        <motion.div
+                            key={current}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.6 }}
+                            className="flex justify-center items-center w-full h-[420px] md:h-[500px]"
+                        >
+                            <img
+                                src={events[current]?.image}
+                                alt={events[current]?.name || `Event ${current + 1}`}
+                                className={` object-contain rounded-lg w-full h-full`}
+                            />
+                        </motion.div>
 
-                    {/* Indicator Dots */}
-                    <div className="flex justify-center mt-4 space-x-2">
-                        {events.map((_, index) => (
-                            <span
-                                key={index}
-                                onClick={() => setCurrent(index)}
-                                className={`cursor-pointer w-3 h-3 rounded-full ${index === current ? "bg-primary" : "bg-gray-400"}`}
-                            ></span>
-                        ))}
-                    </div>
+                        {/* Indicator Dots */}
+                        <div className="flex justify-center mt-4 space-x-2">
+                            {events.map((_, index) => (
+                                <span
+                                    key={index}
+                                    onClick={() => setCurrent(index)}
+                                    className={`cursor-pointer w-3 h-3 rounded-full ${index === current ? "bg-primary" : "bg-gray-400"}`}
+                                ></span>
+                            ))}
+                        </div>
+
+                        </>
+                    )}
                 </div>
             )}
         </>

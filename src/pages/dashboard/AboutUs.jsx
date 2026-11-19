@@ -9,13 +9,13 @@ const AboutUs = () => {
     return (
         <div className="bg-gray-50 min-h-screen p-4 md:p-8 font-sans text-gray-700">
             {/* Back Button */}
-            <div className="w-fit bg-gray-200 p-3 rounded-lg shadow-sm mb-8 hover:bg-gray-300 transition-colors">
+            <div className="w-fit mb-6 transition-opacity hover:opacity-80">
                 <button
                     onClick={() => window.history.back()}
                     className="flex items-center text-lg text-primary"
                 >
                     <GoArrowLeft className="text-xl" />
-                    <h2 className="text-xl font-bold text-gray-800 ml-3">Back</h2>
+                    <h2 className="text-base font-semibold text-primary ml-2">Back</h2>
                 </button>
             </div>
 
